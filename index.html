@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CoursePlan Agent</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace" aria-label="University schedule planning chatbot">
+        <aside class="sidebar">
+          <div>
+            <p class="eyebrow">CoursePlan Agent</p>
+            <h1>UW Planner</h1>
+          </div>
+
+          <div class="profile-panel">
+            <div>
+              <label class="label" for="selected-degree">Selected degree</label>
+              <select id="selected-degree" aria-label="Selected degree">
+                <option value="Computer Science (BCS)">Computer Science (BCS)</option>
+                <option value="Computer Science (BMath)">Computer Science (BMath)</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <h2>Degree Requirements</h2>
+            <div id="requirements-list" class="requirements-list"></div>
+          </div>
+        </aside>
+
+        <section class="chat-panel">
+          <header class="chat-header">
+            <div>
+              <span class="label">Agent workspace</span>
+              <h2>Schedule Builder</h2>
+            </div>
+            <button id="reset-chat" class="icon-button" title="Start a new conversation" aria-label="Start a new conversation">
+              ↻
+            </button>
+          </header>
+
+          <div id="messages" class="messages" aria-live="polite"></div>
+
+          <form id="chat-form" class="composer">
+            <textarea
+              id="message-input"
+              rows="3"
+              placeholder="Tell me your degree, interests, completed courses, target graduation date, and constraints..."
+              required
+            ></textarea>
+            <button type="submit">Send</button>
+          </form>
+        </section>
+
+        <aside class="course-panel">
+          <div class="course-panel-header">
+            <div>
+              <span class="label">Live recommendations</span>
+              <h2>Courses</h2>
+            </div>
+            <input id="course-search" type="search" placeholder="Search" />
+          </div>
+          <div id="course-list" class="course-list"></div>
+        </aside>
+      </section>
+    </main>
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>

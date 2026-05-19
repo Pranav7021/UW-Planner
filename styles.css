@@ -1,0 +1,401 @@
+:root {
+  color-scheme: light;
+  --ink: #17212b;
+  --muted: #5c6874;
+  --line: #d9e1e8;
+  --panel: #ffffff;
+  --wash: #eef3f6;
+  --accent: #0f7c80;
+  --accent-dark: #075d61;
+  --gold: #b7791f;
+  --rose: #b54b5d;
+  --green: #317a4f;
+  --shadow: 0 18px 50px rgba(30, 44, 58, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(238, 243, 246, 0.9)),
+    url("https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1800&q=80");
+  background-size: cover;
+  background-position: center;
+  color: var(--ink);
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.app-shell {
+  height: 100dvh;
+  padding: 18px;
+  overflow: hidden;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(250px, 0.75fr) minmax(360px, 1.35fr) minmax(270px, 0.9fr);
+  gap: 18px;
+  max-width: 1440px;
+  height: calc(100dvh - 36px);
+  min-height: 0;
+  margin: 0 auto;
+}
+
+.sidebar,
+.chat-panel,
+.course-panel {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(217, 225, 232, 0.92);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+  min-height: 0;
+  max-height: 100%;
+}
+
+.sidebar,
+.course-panel {
+  padding: 22px;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  overflow-y: auto;
+}
+
+.eyebrow,
+.label {
+  display: block;
+  margin: 0 0 7px;
+  color: var(--accent-dark);
+  font-size: 0.76rem;
+  font-weight: 750;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 0;
+  font-size: clamp(2.1rem, 5vw, 4.7rem);
+  line-height: 0.96;
+  letter-spacing: 0;
+}
+
+h2 {
+  margin-bottom: 14px;
+  font-size: 1rem;
+}
+
+.profile-panel {
+  display: grid;
+  gap: 14px;
+  padding: 16px;
+  background: #f7fafb;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.requirements-list,
+.course-list {
+  display: grid;
+  gap: 10px;
+}
+
+.requirement,
+.course-card {
+  padding: 14px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.requirement strong,
+.course-card strong {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.requirement p,
+.course-card p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.chat-panel {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.chat-header,
+.course-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.chat-header {
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.chat-header h2,
+.course-panel-header h2 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.icon-button {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--accent-dark);
+  cursor: pointer;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 0;
+  padding: 22px;
+  overflow-y: auto;
+}
+
+.message {
+  max-width: 82%;
+  padding: 14px 16px;
+  border-radius: 8px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.message.assistant {
+  align-self: flex-start;
+  background: #edf6f3;
+  border: 1px solid #cce3dd;
+}
+
+.message.user {
+  align-self: flex-end;
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.composer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  padding: 16px;
+  border-top: 1px solid var(--line);
+  background: #f7fafb;
+}
+
+textarea,
+input,
+select {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--ink);
+  outline: none;
+}
+
+textarea {
+  min-height: 74px;
+  resize: vertical;
+  padding: 13px 14px;
+}
+
+input {
+  max-width: 122px;
+  padding: 10px 11px;
+}
+
+select {
+  min-height: 44px;
+  padding: 10px 38px 10px 11px;
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--accent-dark) 50%),
+    linear-gradient(135deg, var(--accent-dark) 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) 19px,
+    calc(100% - 13px) 19px;
+  background-repeat: no-repeat;
+  background-size: 5px 5px;
+  font-weight: 700;
+}
+
+textarea:focus,
+input:focus,
+select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(15, 124, 128, 0.14);
+}
+
+.composer button {
+  align-self: end;
+  min-width: 92px;
+  height: 46px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.composer button:disabled {
+  background: #9bb6b8;
+  cursor: wait;
+}
+
+.course-panel {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 18px;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.course-list {
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.course-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.pill.credits {
+  background: var(--gold);
+}
+
+.pill.type {
+  background: var(--green);
+}
+
+.pill.term {
+  background: var(--accent);
+}
+
+.pill.tags {
+  background: var(--rose);
+}
+
+@media (max-width: 1100px) {
+  body {
+    overflow-y: auto;
+  }
+
+  .app-shell {
+    height: auto;
+    min-height: 100dvh;
+    overflow: visible;
+  }
+
+  .workspace {
+    grid-template-columns: 1fr;
+    height: auto;
+    min-height: calc(100dvh - 36px);
+  }
+
+  .chat-panel,
+  .course-panel {
+    height: calc(100dvh - 36px);
+    min-height: 0;
+  }
+
+  h1 {
+    max-width: 780px;
+  }
+}
+
+@media (max-width: 640px) {
+  .app-shell {
+    padding: 12px;
+  }
+
+  .workspace {
+    height: auto;
+    min-height: calc(100dvh - 24px);
+  }
+
+  .chat-panel,
+  .course-panel {
+    height: calc(100dvh - 24px);
+  }
+
+  .sidebar,
+  .course-panel {
+    padding: 16px;
+  }
+
+  .message {
+    max-width: 94%;
+  }
+
+  .composer {
+    grid-template-columns: 1fr;
+  }
+
+  .composer button {
+    width: 100%;
+  }
+
+  .course-panel-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  input {
+    max-width: none;
+  }
+}
